@@ -9,20 +9,20 @@ const pool = mysql.createPool({
     waitForConnections: true, //Aguarda conexoes livres
     connectionLimit: 10, //Limita o numero de conexoes
     queueLimit: 0 //Sem limite para a fila de espera
-})
+});
 
-    //testar o pool
+//testar o pool
 
-    (async () => {
-        try {
-            const connection = await pool.getConnection();
-            console.log('Conectado ao MySQL')
-            connection.release()
-        } catch (error) {
-            console.error(`Erro ao conectar ao MySQL: ${error}`);
-        }
-    })();
+(async () => {
+    try {
+        const connection = await pool.getConnection();
+        console.log('Conectado ao MySQL')
+        connection.release()
+    } catch (error) {
+        console.error(`Erro ao conectar ao MySQL: ${error}`);
+    }
+})();
 
 
 
-module.export = pool;
+module.exports = pool;
