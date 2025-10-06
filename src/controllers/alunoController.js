@@ -10,14 +10,15 @@ const buscarTodosAlunos = async (req, res) => {
     }
 }
 
-const buscarAluno = async (req, res) => {
+const buscarIdAluno = async (req, res) => {
     try {
         const id = req.params.id
+
         const resultadoAluno = await alunoModel.selecionaAluno(id);
         res.status(200).json({ message: 'Aluno encontrado!', dados: resultadoAluno })
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Aluno não encontrado', errorMessage: error.message });
+        res.status(404).json({ message: 'Aluno não encontrado', errorMessage: error.message });
     }
 }
-module.exports = { buscarTodosAlunos, buscarAluno }
+module.exports = { buscarTodosAlunos, buscarIdAluno }

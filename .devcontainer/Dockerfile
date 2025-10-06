@@ -8,7 +8,7 @@ ENV TERM=xterm-256color \
 
 # Atualiza e instala pacotes básicos
 RUN pacman -Syu --noconfirm && \
-    pacman -S --noconfirm base-devel git sudo vim curl && \
+    pacman -S --noconfirm base-devel git sudo neovim lazygit curl && \
     pacman -Scc --noconfirm
 
 # Cria usuário não-root (melhor para dev)

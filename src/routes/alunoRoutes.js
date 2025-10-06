@@ -8,6 +8,6 @@ router.get('/alunos', alunoController.buscarTodosAlunos);
 
 //Nova rota
 
-router.get('/alunos/:id', alunoController.buscarAluno)
+router.get('/alunos/:id', alunoController.buscarIdAluno)
 
 module.exports = router 
