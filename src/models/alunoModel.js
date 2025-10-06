@@ -6,4 +6,11 @@ const selecionaTodosAlunos = async () => {
     return rows;
 }
 
-module.exports = { selecionaTodosAlunos }
+const selecionaAluno = async (id) => {
+    const sql = `SELECT * FROM alunos where id_aluno=?;`
+    const [rows] = await pool.query(sql, id);
+    return rows;
+}
+
+
+module.exports = { selecionaTodosAlunos, selecionaAluno }
