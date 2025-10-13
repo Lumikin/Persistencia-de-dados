@@ -7,5 +7,6 @@ router.get('/alunos', alunoController.buscarTodosAlunos);
 //Nova rota
 router.get('/alunos/:id', alunoController.buscarIdAluno)
 router.post('/alunos', alunoController.criarNovoRegistro) // => Criar novo aluno é POST não GET
+router.put('/alunos/:id', alunoController.updateRegistro) // => Alterar um registro existente
 
 module.exports = router 
