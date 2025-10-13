@@ -13,12 +13,14 @@ const buscarTodosAlunos = async (req, res) => {
 const buscarIdAluno = async (req, res) => {
     try {
         const id = req.params.id
-
+        if (!id || isNaN(id)) {
+            res.status(400).json({ message: 'Aluno Invalido!' })
+        }
         const resultadoAluno = await alunoModel.selecionaAluno(id);
         res.status(200).json({ message: 'Aluno encontrado!', dados: resultadoAluno })
     } catch (error) {
         console.error(error);
-        res.status(404).json({ message: 'Aluno não encontrado', errorMessage: error.message });
+        res.status(500).json({ message: 'Erro Interno do Servidor', errorMessage: error.message });
     }
 }
 module.exports = { buscarTodosAlunos, buscarIdAluno }
