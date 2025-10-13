@@ -10,17 +10,38 @@ const buscarTodosAlunos = async (req, res) => {
     }
 }
 
+// Selecionar por ID
+
 const buscarIdAluno = async (req, res) => {
     try {
-        const id = req.params.id
-        if (!id || isNaN(id)) {
-            res.status(400).json({ message: 'Aluno Invalido!' })
+        const id = Number(req.params.id)
+        // Verificacao se é um numeral e inteiro
+        if (!id || !Number.isInteger(id)) {
+            res.status(400).json({ message: 'Aluno Invalido' })
         }
         const resultadoAluno = await alunoModel.selecionaAluno(id);
+
+        // retornar o ID do aluno
         res.status(200).json({ message: 'Aluno encontrado!', dados: resultadoAluno })
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Erro Interno do Servidor', errorMessage: error.message });
     }
 }
-module.exports = { buscarTodosAlunos, buscarIdAluno }
+
+
+const criarNovoRegistro = async (req, res) => {
+    try {
+        const {nome, matricula} = req.body
+        const resultadoRegistro = await alunoModel.inserirAluno(nome, matricula)
+        if (!String(nome) || !String(matricula) || nome.length < 3 || matricula.length !== 5) {
+            res.status(400).json({ message: 'verifique os dados e tente novamente' })
+        }
+        res.status(201).json({message: 'Resgistro incluido com sucesso', result: resultadoRegistro});
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro Interno do Servidor', errorMessage: error.message });
+    }
+}
+module.exports = { buscarTodosAlunos, buscarIdAluno, criarNovoRegistro }

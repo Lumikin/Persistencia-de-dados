@@ -12,5 +12,12 @@ const selecionaAluno = async (id) => {
     return rows;
 }
 
+const inserirAluno = async (pNome, pMatricula) => {
+    const sql = 'INSERT INTO alunos (nome, matricula) VALUES (?,?);'
+    const values = [pNome, pMatricula]
+    const [rows] = await pool.query(sql, values )
+    return rows;
+};
 
-module.exports = { selecionaTodosAlunos, selecionaAluno }
+
+module.exports = { selecionaTodosAlunos, selecionaAluno, inserirAluno }
