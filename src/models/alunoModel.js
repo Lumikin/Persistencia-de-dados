@@ -15,16 +15,22 @@ const selectAluno = async (id) => {
 const insertAluno = async (pNome, pMatricula) => {
     const sql = 'INSERT INTO alunos (nome, matricula) VALUES (?,?);'
     const values = [pNome, pMatricula]
-    const [rows] = await pool.query(sql, values )
+    const [rows] = await pool.query(sql, values)
     return rows;
 };
 
-const UpdateAluno = async (pID,pNome, pMatricula) => {
+const UpdateAluno = async (pID, pNome, pMatricula) => {
     const sql = 'UPDATE alunos SET nome = ?, matricula = ? WHERE id_aluno =?;'
     const values = [pNome, pMatricula, pID]
-    const [rows] = await pool.query(sql, values )
+    const [rows] = await pool.query(sql, values)
     return rows;
 };
 
+const deleteAluno = async (pID) => {
+    const sql = 'DELETE FROM alunos WHERE id_aluno = ?;';
+    const values = [pID];
+    const [rows] = await pool.query(sql, values);
+    return rows;
+}
 
-module.exports = { selectTodosAlunos, selectAluno, insertAluno, UpdateAluno }
+module.exports = { selectTodosAlunos, selectAluno, insertAluno, UpdateAluno, deleteAluno }

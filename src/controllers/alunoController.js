@@ -48,12 +48,12 @@ const criarNovoRegistro = async (req, res) => {
 const updateRegistro = async (req, res) => {
 
     try {
-        const id  = Number(req.params.id);
+        const id = Number(req.params.id);
         const { nome, matricula } = req.body;
         if (!id || !Number.isInteger(id) || !String(nome) || !String(matricula) || nome.length < 3 || matricula.length !== 5) {
             return res.status(400).json({ message: 'verifique os dados e tente novamente' })
         }
-        const restultadoUpdate = await alunoModel.UpdateAluno(id,nome, matricula)
+        const restultadoUpdate = await alunoModel.UpdateAluno(id, nome, matricula)
         res.status(200).json({ message: 'Resgistro Atualizado com sucesso', result: restultadoUpdate });
 
     } catch (error) {
@@ -61,4 +61,18 @@ const updateRegistro = async (req, res) => {
         res.status(500).json({ message: 'Erro Interno do Servidor', errorMessage: error.message });
     }
 }
-module.exports = { buscarTodosAlunos, buscarIdAluno, criarNovoRegistro, updateRegistro }
+
+const delAluno = async (req, res) => {
+    try {
+        const id = Number(req.params.id)
+        if (!id || !Number.isInteger(id)) {
+            return res.status(400).json({ message: 'verifique o ID informado e tente novamente' })
+        }
+        const restultadoDelete = await alunoModel.deleteAluno(id)
+        res.status(200).json({ message: 'Registro excluido com sucesso!', data: restultadoDelete })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro Interno do Servidor', errorMessage: error.message });
+    }
+}
+module.exports = { buscarTodosAlunos, buscarIdAluno, criarNovoRegistro, updateRegistro, delAluno }
