@@ -1,0 +1,144 @@
+type: collection.insomnia.rest/5.0
+name: Aula_Persistencia_1
+meta:
+  id: wrk_1af8abfd39f6411ca1097155291706b2
+  created: 1760363607360
+  modified: 1760363607360
+  description: ""
+collection:
+  - url: localhost:8081/alunos
+    name: Select Todos
+    meta:
+      id: req_a38b659cc4254a9cbe9791fc64e1a94b
+      created: 1760363641665
+      modified: 1760363674414
+      isPrivate: false
+      description: ""
+      sortKey: -1760363641665
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8081/alunos/1
+    name: Select por id
+    meta:
+      id: req_a540cb8b4af445ff83dc953528168d83
+      created: 1760363722393
+      modified: 1760363742706
+      isPrivate: false
+      description: ""
+      sortKey: -1760363722393
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8081/alunos/
+    name: Insert
+    meta:
+      id: req_0351ee6ac4cd45e5afd9a20edf11321e
+      created: 1760363777184
+      modified: 1760364188162
+      isPrivate: false
+      description: ""
+      sortKey: -1760363722493
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Ana",
+        	"matricula": "Ma345"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8081/alunos/1
+    name: Update
+    meta:
+      id: req_01bceafcc8534788ac00605998fde6ff
+      created: 1760370489293
+      modified: 1760373779592
+      isPrivate: false
+      description: ""
+      sortKey: -1760370489293
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Samuel T.",
+        	"matricula": "MA003"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8081/alunos/5
+    name: Delete
+    meta:
+      id: req_177189a14f48414682e35ffa7a2431da
+      created: 1760377750400
+      modified: 1760378805175
+      isPrivate: false
+      description: ""
+      sortKey: -1760377750400
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_2de09b7b1c51030a04dc391e5888e1c6feae4e17
+    created: 1760363607365
+    modified: 1760363607365
+environments:
+  name: Base Environment
+  meta:
+    id: env_2de09b7b1c51030a04dc391e5888e1c6feae4e17
+    created: 1760363607363
+    modified: 1760363607363
+    isPrivate: false
